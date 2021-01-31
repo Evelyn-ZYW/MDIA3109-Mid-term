@@ -57,7 +57,7 @@ const Option = styled.div`
     // border:1px solid red;
 `;
 
-const FormCheckbox = styled.input.attrs({ type: 'radio' })`
+const FormRadio = styled.input.attrs({ type: 'radio' })`
     margin-right: 10px;
     &:after{
         background: white;
@@ -70,10 +70,10 @@ const Filter = () => {
     return <Container>
         <ContOne>
             <Option>
-                <FormCheckbox type="radio" value="Income" onChange={(e) => { setRadio(e.target.value) }} checked={radio === "Income"} /> Income
+                <FormRadio type="radio" value="Income" onChange={(e) => { setRadio(e.target.value) }} checked={radio === "Income"} /> Income
         </Option>
             <Option color="#B80000">
-                <FormCheckbox type="radio" value="Expense" onChange={(e) => { setRadio(e.target.value) }} checked={radio === "Expense"} /> Expense
+                <FormRadio type="radio" value="Expense" onChange={(e) => { setRadio(e.target.value) }} checked={radio === "Expense"} /> Expense
         </Option>
         </ContOne>
         <ContTwo>

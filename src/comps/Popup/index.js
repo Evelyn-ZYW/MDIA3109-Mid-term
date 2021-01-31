@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import close from "images/close.png";
 import a1 from "images/a1.png";
@@ -12,7 +12,7 @@ const Container = styled.div`
     border-radius: 20px;
     background-color: rgba(238, 238, 238, 0.9);
     position: relative;
-    display: flex;
+    display: ${props => props.display ? props.display : "flex"};
     flex-direction: column;
     justify-content: space-around;
     & > div {
@@ -43,6 +43,13 @@ const Container = styled.div`
 
 `;
 const FormRadio = styled.input.attrs({ type: 'radio' })`
+    margin-right: 10px;
+    &:after{
+        background: white;
+    }
+    &:hover{
+        cursor: pointer;
+    }
 `;
 const Button = styled.button`
     min-width: 122px;
@@ -58,25 +65,38 @@ const Button = styled.button`
         box-shadow: 0 3 px #666;
         transform: translateY(2px);
     }
+    &:hover{
+        cursor: pointer;
+    }
 `;
 const Close = styled.img`
     position: relative;
     right: -91%;
+    &:hover{
+        cursor: pointer;
+    }
 `;
 
+const Popup = () => {
+
+    const [radio, setRadio] = useState("");
+    const [display, setDisplay] = useState("flex");
 
 
-const Popup = ({ onClose }) => {
-    return <Container>
+
+    const HandleVisibility = () => {
+        setDisplay("none")
+    }
+    return <Container display={display}>
         <div>
-            <Close src={close} onClick={onClose} />
+            <Close src={close} onClick={HandleVisibility} />
         </div>
         <div>
             <img src={a1} />
             <span>
                 <span>BC Hydro</span>
                 <span>
-                    <span style={{color:"#B80000"}}>Bill</span>
+                    <span style={{ color: "#B80000" }}>Bill</span>
                     <span>-$49.99</span>
                 </span>
             </span>
@@ -88,8 +108,8 @@ const Popup = ({ onClose }) => {
             </span>
         </div>
         <div>
-            <FormRadio /> <div style={{ color: "#2D7700" }} > PAID</div>
-            <FormRadio /> <div style={{ color: "#FF8A00" }}>PENDING</div>
+            <FormRadio type="radio" value="PAID" onChange={(e) => { setRadio(e.target.value) }} checked={radio === "PAID"} /> <div style={{ color: "#2D7700" }} > PAID</div>
+            <FormRadio type="radio" value="PENDING" onChange={(e) => { setRadio(e.target.value) }} checked={radio === "PENDING"} /> <div style={{ color: "#FF8A00" }}>PENDING</div>
         </div>
         <div style={{ justifyContent: "center" }}>
             <Button>OK</Button>
@@ -98,6 +118,6 @@ const Popup = ({ onClose }) => {
     </Container>
 }
 Popup.defaultProps = {
-
+    onClose: () => { },
 }
 export default Popup;
