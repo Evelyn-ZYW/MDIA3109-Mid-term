@@ -10,6 +10,7 @@ const Container = styled.div`
     max-height: 243px;
     background-color: rgba(238, 238, 238, 0.9);
     position: relative;
+    display: ${props=>props.display?props.display: "block"};
 `;
 const ContOne = styled.div`
     display: flex;
@@ -67,7 +68,17 @@ const FormRadio = styled.input.attrs({ type: 'radio' })`
 const Filter = () => {
     const [radio, setRadio] = useState("");
 
-    return <Container>
+    const [display, setDisplay] = useState("block");
+
+    const onApply = () => {
+        setDisplay("none")
+    }
+
+    const onClear = () => {
+        setRadio("")
+    }
+
+    return <Container display={display}>
         <ContOne>
             <Option>
                 <FormRadio type="radio" value="Income" onChange={(e) => { setRadio(e.target.value) }} checked={radio === "Income"} /> Income
@@ -77,8 +88,8 @@ const Filter = () => {
         </Option>
         </ContOne>
         <ContTwo>
-            <Button>CLEAR</Button>
-            <Button>APPLY</Button>
+            <Button onClick={onClear}>CLEAR</Button>
+            <Button onClick={onApply}>APPLY</Button>
         </ContTwo>
     </Container>
 }

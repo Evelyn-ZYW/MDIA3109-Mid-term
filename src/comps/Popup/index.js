@@ -112,7 +112,7 @@ const Popup = () => {
             <FormRadio type="radio" value="PENDING" onChange={(e) => { setRadio(e.target.value) }} checked={radio === "PENDING"} /> <div style={{ color: "#FF8A00" }}>PENDING</div>
         </div>
         <div style={{ justifyContent: "center" }}>
-            <Button>OK</Button>
+            <Button onClick={HandleVisibility}>OK</Button>
         </div>
 
     </Container>
