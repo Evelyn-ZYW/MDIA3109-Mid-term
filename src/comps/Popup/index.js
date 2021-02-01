@@ -87,6 +87,15 @@ const Popup = () => {
     const HandleVisibility = () => {
         setDisplay("none")
     }
+
+    const SelectionComplete = () => {
+        if(radio===""){
+            alert("Bill status not updated!")
+            HandleVisibility()
+        } else {
+            HandleVisibility()
+        }
+    }
     return <Container display={display}>
         <div>
             <Close src={close} onClick={HandleVisibility} />
@@ -112,7 +121,7 @@ const Popup = () => {
             <FormRadio type="radio" value="PENDING" onChange={(e) => { setRadio(e.target.value) }} checked={radio === "PENDING"} /> <div style={{ color: "#FF8A00" }}>PENDING</div>
         </div>
         <div style={{ justifyContent: "center" }}>
-            <Button onClick={HandleVisibility}>OK</Button>
+            <Button onClick={SelectionComplete}>OK</Button>
         </div>
 
     </Container>
