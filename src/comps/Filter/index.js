@@ -10,6 +10,7 @@ const Container = styled.div`
     max-height: 243px;
     background-color: rgba(238, 238, 238, 0.9);
     position: relative;
+    display: ${props=>props.display?props.display: "block"};
 `;
 const ContOne = styled.div`
     display: flex;
@@ -57,7 +58,7 @@ const Option = styled.div`
     // border:1px solid red;
 `;
 
-const FormCheckbox = styled.input.attrs({ type: 'radio' })`
+const FormRadio = styled.input.attrs({ type: 'radio' })`
     margin-right: 10px;
     &:after{
         background: white;
@@ -67,18 +68,28 @@ const FormCheckbox = styled.input.attrs({ type: 'radio' })`
 const Filter = () => {
     const [radio, setRadio] = useState("");
 
-    return <Container>
+    const [display, setDisplay] = useState("block");
+
+    const onApply = () => {
+        setDisplay("none")
+    }
+
+    const onClear = () => {
+        setRadio("")
+    }
+
+    return <Container display={display}>
         <ContOne>
             <Option>
-                <FormCheckbox type="radio" value="Income" onChange={(e) => { setRadio(e.target.value) }} checked={radio === "Income"} /> Income
+                <FormRadio type="radio" value="Income" onChange={(e) => { setRadio(e.target.value) }} checked={radio === "Income"} /> Income
         </Option>
             <Option color="#B80000">
-                <FormCheckbox type="radio" value="Expense" onChange={(e) => { setRadio(e.target.value) }} checked={radio === "Expense"} /> Expense
+                <FormRadio type="radio" value="Expense" onChange={(e) => { setRadio(e.target.value) }} checked={radio === "Expense"} /> Expense
         </Option>
         </ContOne>
         <ContTwo>
-            <Button>CLEAR</Button>
-            <Button>APPLY</Button>
+            <Button onClick={onClear}>CLEAR</Button>
+            <Button onClick={onApply}>APPLY</Button>
         </ContTwo>
     </Container>
 }
