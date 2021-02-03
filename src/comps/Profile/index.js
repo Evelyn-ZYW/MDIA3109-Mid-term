@@ -86,7 +86,7 @@ font-size: 36px;
 margin:0px 20px 0px 20px;
 `;
 
-//
+
 
 const Profile = ({name1, name2,account}) =>{
 
