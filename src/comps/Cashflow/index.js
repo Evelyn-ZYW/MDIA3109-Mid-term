@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -30,31 +30,35 @@ const White = styled.div`
     background-color: white;
     min-width: 346px;
     max-width: 346px;
-    // border: 1px solid red;
 `;
 const Subtitle = styled.div`
     border-bottom: 1px solid #002B54;
+    color: #002B54;
     align-items: center;
     margin: 0 15px;
 `;
 const Button = styled.div`
     align-items: center;
+    color: #002B54;
     &:hover{
         cursor: pointer;
     }
 `;
 
-const Cashflow = ({ inc, exp, net, onContainerSelect }) => {
+const Cashflow = ({ inc, exp, onContainerSelect }) => {
+
+    const [net, setNet] = useState(Math.round((inc-exp)*100)/100);
+
     return <Container>
         <Subtitle>January Cash Flow</Subtitle>
         <div>
             <span>
                 <span>Income</span>
-                <span color="#2D7700">{inc}</span>
+                <span style={{color:"#2D7700"}}>{inc}</span>
             </span>
             <span>
-                <span>Expenses</span>
-                <span color="#B80000">{exp}</span>
+                <span>Expense</span>
+                <span style={{color:"#B80000"}}>{exp}</span>
             </span>
         </div>
         <White>
@@ -66,8 +70,7 @@ const Cashflow = ({ inc, exp, net, onContainerSelect }) => {
     </Container>
 }
 Cashflow.defaultProps = {
-    inc: "$6443.45",
-    exp: "$4332.34",
-    net: "$2121.20"
+    inc: 6443.45,
+    exp: 4332.34,
 }
 export default Cashflow;
