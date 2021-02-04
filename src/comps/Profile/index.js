@@ -17,7 +17,7 @@ const ProfileCont = styled.div`
     jsutify-content:center;
     align-items:center;
     font-size: 18px;
-    margin:5px;
+    // margin:5px;
 `;
 
 const Titles = styled.div`
