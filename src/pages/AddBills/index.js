@@ -4,7 +4,11 @@ import iconLeft from 'images/back.png';
 import TransTitle from 'comps/TransTitle';
 import Buttons from 'comps/Button';
 
+import {useHistory} from "react-router-dom";
+
 const AddBills = () => {
+
+    const history = useHistory();
 
     return <div className="addbills" >
         <Headers headText={'Add Bills'} iconLeft={iconLeft} />
@@ -17,8 +21,8 @@ const AddBills = () => {
         <div className='input3'>
             <TransTitle text={'Description'} height={'140px'}/>
         </div>
-        <div className='button'>
-            <Buttons width={'308px'} height={'52px'} fontSize={'22px'} text={'Add'}/>
+        <div className='button' onClick={()=>history.push('/trans')}>
+            <Buttons width={'308px'} height={'52px'} fontSize={'22px'} text={'Add'} />
         </div>
     </div>
 }

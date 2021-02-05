@@ -5,7 +5,13 @@ import TransTitle from 'comps/TransTitle';
 import Buttons from 'comps/Button';
 import RadioButtons from 'comps/RadioButtons';
 
+import {useHistory, useLocation} from "react-router-dom";
+
 const AddTransaction = () => {
+
+    const history = useHistory();
+    const location = useLocation();
+    console.log(location);
 
     return <div className="addtransaction">
         <Headers headText={'Add/Edit Transaction'} iconLeft={iconLeft} />
@@ -21,7 +27,7 @@ const AddTransaction = () => {
         <div className='input3'>
             <TransTitle text={'Description'} height={'140px'}/>
         </div>
-        <div className='button'>
+        <div className='button' onClick={()=>history.push('/trans')}>
             <Buttons width={'308px'} height={'52px'} fontSize={'22px'} text={'Add'}/>
         </div>        
     </div>
