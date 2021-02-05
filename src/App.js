@@ -12,15 +12,34 @@ import 'pages/AddTransaction/addtransaction.scss';
 import AddTransaction from 'pages/AddTransaction';
 import RadioButtons from 'comps/RadioButtons';
 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link 
+} from "react-router-dom";
+
 
 function App() {
   return (
-    <div className="App">
-      {/* <Main /> */}
-      {/* <AddBills /> */}
-      <TransPage />
-
-    </div>
+    <Router>
+      <div className="App">
+          <Switch>
+            <Route exact path='/'>
+              <Homepage/>
+            </Route>
+            <Route path='/addbill'>
+              <AddBills/>
+            </Route>
+            <Route path='/addtrans'>
+              <AddTransaction />
+            </Route>
+            <Route path='/trans'>
+              <TransPage/>
+            </Route>
+          </Switch>
+      </div>
+    </Router>
   );
 }
 
