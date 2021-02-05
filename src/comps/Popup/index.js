@@ -14,6 +14,7 @@ const Container = styled.div`
     background-color: rgba(238, 238, 238, 0.9);
     position: absolute;
     top: 20%;
+    left: 5%;
     display: ${props => props.display ? props.display : "flex"};
     flex-direction: column;
     justify-content: space-around;
@@ -79,7 +80,7 @@ const Close = styled.img`
     }
 `;
 
-const Popup = ({ onPopupComplete }) => {
+const Popup = ({ onPopupComplete, title, src, type, amount,description }) => {
 
     const [radio, setRadio] = useState("");
     const [display, setDisplay] = useState("flex");
@@ -105,34 +106,32 @@ const Popup = ({ onPopupComplete }) => {
     }
 
     return <Container display={display} complete={complete}>
-        <div>
-            <Close src={close} onClick={HandleVisibility} />
-        </div>
-        <div>
-            <img src={a1} />
-            <span>
-                <span>BC Hydro</span>
+            <div>
+                <Close src={close} onClick={HandleVisibility} />
+            </div>
+            <div>
+                <img src={src} />
                 <span>
-                    <span style={{ color: "#B80000" }}>Bill</span>
-                    <span>-$49.99</span>
+                    <span>{title}</span>
+                    <span>
+                        <span style={{ color: "#B80000" }}>{type}</span>
+                        <span>{amount}</span>
+                    </span>
                 </span>
-            </span>
-        </div>
-        <div>
-            <span>
-                <span>BC Hydro bill for house</span>
-                <span>To be paid on March 22, 2021</span>
-            </span>
-        </div>
-        <div>
-            <FormRadio type="radio" value="PAID" onChange={(e) => { setRadio(e.target.value) }} checked={radio === "PAID"} /> <div style={{ color: "#2D7700" }} > PAID</div>
-            <FormRadio type="radio" value="PENDING" onChange={(e) => { setRadio(e.target.value) }} checked={radio === "PENDING"} /> <div style={{ color: "#FF8A00" }}>PENDING</div>
-        </div>
-        <div style={{ justifyContent: "center" }}>
-            <Button onClick={HandleComplete}>OK</Button>
-        </div>
-
-    </Container>
+            </div>
+            <div>
+                <span>
+                    <span>{description}</span>
+                </span>
+            </div>
+            <div>
+                <FormRadio type="radio" value="PAID" onChange={(e) => { setRadio(e.target.value) }} checked={radio === "PAID"} /> <div style={{ color: "#2D7700" }} >PAID</div>
+                <FormRadio type="radio" value="PENDING" onChange={(e) => { setRadio(e.target.value) }} checked={radio === "PENDING"} /> <div style={{ color: "#FF8A00" }}>PENDING</div>
+            </div>
+            <div style={{ justifyContent: "center" }}>
+                <Button onClick={HandleComplete}>OK</Button>
+            </div>
+            </Container>
 }
 Popup.defaultProps = {
     onClose: () => { },

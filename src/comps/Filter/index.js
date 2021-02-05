@@ -12,6 +12,7 @@ const Container = styled.div`
     background-color: rgba(238, 238, 238, 0.9);
     position: absolute;
     top: 65px;
+    left: 6%;
     display: ${props=>props.display?props.display: "block"};
 `;
 const ContOne = styled.div`
