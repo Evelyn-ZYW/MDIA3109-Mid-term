@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
+    z-index: 1;
     border: 2px solid #B7B7B7;
     border-radius: 10px;
     min-width: 326px;
@@ -9,7 +10,8 @@ const Container = styled.div`
     min-height: 243px;
     max-height: 243px;
     background-color: rgba(238, 238, 238, 0.9);
-    position: relative;
+    position: absolute;
+    top: 65px;
     display: ${props=>props.display?props.display: "block"};
 `;
 const ContOne = styled.div`

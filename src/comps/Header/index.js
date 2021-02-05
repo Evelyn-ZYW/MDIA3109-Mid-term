@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import 'images/back.png';
 
@@ -11,8 +11,10 @@ const HeaderCont = styled.div`
     background-color:#C7DEEC;
     min-width:375px;
     min-height:65px;
-    position:absolute;
+    //position:absolute; //comment out by evelyn
     top:0px;
+    //evelyn's changes below
+    // border: 1px solid red;
 
     img {
         max-width:30px;
@@ -41,16 +43,35 @@ const HeaderCont = styled.div`
 `;
 
 
-const Header = ({headText, iconRight, iconLeft}) =>{
+
+const Header = ({ headText, iconRight, iconLeft, onSelectFilter }) => {
+    
+    const [filterclicked, setFilterClicked] = useState(false);
+    
+    const HandleFilter = () => {
+        console.log("Filter Clicked: " + filterclicked);
+        if (filterclicked === true) {
+            setFilterClicked(!true)
+        } else if (filterclicked === false) {
+            setFilterClicked(!false)
+        }
+        onSelectFilter(filterclicked)
+    }
+
     return <HeaderCont>
-        <img src={iconLeft} className="left"/><div>{headText}</div><img src={iconRight} className="right"/>
+        <img src={iconLeft} className="left" />
+        <div>{headText}</div>
+        <img src={iconRight} className="right"
+            onClick={HandleFilter}
+        />
     </HeaderCont>
 }
 
 Header.defaultProps = {
-    headText:null,
-    iconLeft:null,
-    iconRight:null
+    headText: null,
+    iconLeft: null,
+    iconRight: null,
+    onSelectFilter: () => { }
 }
 
 export default Header;

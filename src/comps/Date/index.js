@@ -11,7 +11,7 @@ const DateCont = styled.div`
     font-weight:bold;
     border-top:2px solid #BD9B52;
     border-bottom:2px solid #BD9B52;
-    margin:10px;
+    // margin:10px; // comment out by evelyn
 
     div{
         margin:12px 0px 12px 25px;

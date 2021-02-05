@@ -14,8 +14,8 @@ const Main = () => {
     return <div className="main">
         {/* <Filter /> */}
         {/* <Cashflow /> */}
-        {/* <Popup /> */}
-        <Profile />
+        <Popup />
+        {/* <Profile /> */}
         {/* <Header headText="Transactions/Bills" iconLeft={back} /> */}
         {/* <Date /> */}
     </div>
