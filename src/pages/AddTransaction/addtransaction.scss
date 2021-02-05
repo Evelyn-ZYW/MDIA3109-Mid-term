@@ -1,0 +1,24 @@
+.addtransaction {
+    width: 375px;
+    height: 812px;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .input1{
+        margin-bottom:30px;
+    }
+    .input2{
+        margin-bottom:30px;
+    }
+    .input3{
+        margin-bottom:30px;
+    }
+    .button{
+        margin-top:150px;
+    }
+    .radiobuttons{
+        margin-top:80px;
+        margin-bottom:30px;
+    }
+}
