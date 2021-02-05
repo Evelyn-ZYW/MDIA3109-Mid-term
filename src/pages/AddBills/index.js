@@ -6,7 +6,7 @@ import Buttons from 'comps/Button';
 
 const AddBills = () => {
 
-    return <div className="addbills">
+    return <div className="addbills" >
         <Headers headText={'Add Bills'} iconLeft={iconLeft} />
         <div className='input1'>
             <TransTitle text={'Bill Title'}/>
