@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import a1 from 'images/a1.png';
 
 const Container = styled.div`
-    min-width:100%;
+    min-width:375px;
     min-height:108px;
     background: ${props => props.bgcolor ? props.bgcolor : "#FFF"};
     position: relative;
@@ -39,20 +39,24 @@ const Line2 = styled.div`
     padding-right:20px;
     // margin-bottom:15px;
 `;
-const Line3 = styled.hr`
+const Line3 = styled.div`
     width:325px;
-    // position: relative;
-    bottom: -22px;
+    height: 1px;
+    position: absolute;
+    left: 7%;
+    bottom: 0px;
+    border-bottom: 1px solid #002B54;
 `;
 
-const Transaction = ({ onContainerSelect, onContainerChangeColor, status }) => {
+
+const Transaction = ({ onTransSelect, title, src, amount, status }) => {
 
     const [bgcolor, setBgcolor] = useState("white");
     const [clicked, setClicked] = useState(false);
 
     // console.log(clicked)
 
-    const HandleContainerSelect = () => {
+    const HandleTransSelect = () => {
         if (bgcolor === "white") {
             setBgcolor("rgba(189, 155, 82, 0.25)");
             setClicked(true)
@@ -60,22 +64,22 @@ const Transaction = ({ onContainerSelect, onContainerChangeColor, status }) => {
             setBgcolor("white")
             setClicked(false)
         }
-        onContainerSelect(clicked);
+        onTransSelect(clicked);
     }
 
-    return <Container onClick={HandleContainerSelect} bgcolor={bgcolor} clicked={clicked}>
-        <Line1>
-            <span><img src={a1} />BC Hydro</span>
-            <span>- $ 49.99</span>
-        </Line1>
-        <Line2>{status}</Line2>
-        <Line3 />
+    return <Container onClick={HandleTransSelect} bgcolor={bgcolor} clicked={clicked}>
+            <Line1>
+                <span><img src={src} />{title}</span>
+                <span>{amount}</span>
+            </Line1>
+            <Line2>{status}</Line2>
+            <Line3 />
     </Container>
+
 }
 
 Transaction.defaultProps = {
-    onContainerSelect: () => { },
-    onContainerChangeColor: () => { },
+    onTransSelect: () => { },
 }
 
 export default Transaction
