@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import Cashflow from 'comps/Cashflow';
 import Profile from 'comps/Profile';
 import Bills from 'comps/Bills';

@@ -9,7 +9,7 @@ const Container = styled.div`
 `;
 const InputBox = styled.input`
     width:308px;
-    height:42px;
+    height:${props=>props.height ? props.height : "42px"};
     border-radius:5px;
     border-color:#002B54;
     font-size:18px;
@@ -20,15 +20,16 @@ const InputBox = styled.input`
     }
 `;
 
-const TransTitle = () => {
+const TransTitle = ({text, height}) => {
     return <Container>
-        Transaction Title
-        <InputBox type='text'/>
+        {text}
+        <InputBox type='text' height={height}/>
     </Container>
 }
 
 TransTitle.defaultProps = {
-
+    text:'example',
+    height:'42px;'
 }
 
 export default TransTitle
