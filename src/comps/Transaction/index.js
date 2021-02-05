@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import a1 from 'images/a1.png';
 
 const Container = styled.div`
-    width:365px;
-    height:108px;
-    background-color:white;
+    min-width:100%;
+    min-height:108px;
+    background: ${props => props.bgcolor ? props.bgcolor : "#FFF"};
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 `;
 const Line1 = styled.div`
     display:flex;
@@ -33,25 +37,45 @@ const Line2 = styled.div`
     color:#ff8a00;
     text-align:right;
     padding-right:20px;
-    margin-bottom:15px;
+    // margin-bottom:15px;
 `;
 const Line3 = styled.hr`
     width:325px;
+    // position: relative;
+    bottom: -22px;
 `;
 
-const Transaction = () => {
-    return <Container>
+const Transaction = ({ onContainerSelect, onContainerChangeColor, status }) => {
+
+    const [bgcolor, setBgcolor] = useState("white");
+    const [clicked, setClicked] = useState(false);
+
+    // console.log(clicked)
+
+    const HandleContainerSelect = () => {
+        if (bgcolor === "white") {
+            setBgcolor("rgba(189, 155, 82, 0.25)");
+            setClicked(true)
+        } else {
+            setBgcolor("white")
+            setClicked(false)
+        }
+        onContainerSelect(clicked);
+    }
+
+    return <Container onClick={HandleContainerSelect} bgcolor={bgcolor} clicked={clicked}>
         <Line1>
-            <span><img src={a1}/>BC Hydro</span>
+            <span><img src={a1} />BC Hydro</span>
             <span>- $ 49.99</span>
         </Line1>
-        <Line2>pending</Line2>
+        <Line2>{status}</Line2>
         <Line3 />
     </Container>
 }
 
 Transaction.defaultProps = {
-
+    onContainerSelect: () => { },
+    onContainerChangeColor: () => { },
 }
 
 export default Transaction

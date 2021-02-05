@@ -4,6 +4,7 @@ import close from "images/close.png";
 import a1 from "images/a1.png";
 
 const Container = styled.div`
+    z-index: 1;
     min-width: 332px;
     max-width: 332px;
     min-height: 423px;
@@ -11,7 +12,8 @@ const Container = styled.div`
     border: 2px solid #B7B7B7;
     border-radius: 20px;
     background-color: rgba(238, 238, 238, 0.9);
-    position: relative;
+    position: absolute;
+    top: 20%;
     display: ${props => props.display ? props.display : "flex"};
     flex-direction: column;
     justify-content: space-around;
@@ -77,26 +79,32 @@ const Close = styled.img`
     }
 `;
 
-const Popup = () => {
+const Popup = ({ onPopupComplete }) => {
 
     const [radio, setRadio] = useState("");
     const [display, setDisplay] = useState("flex");
+    const [complete, setComplete] = useState(false)
 
-
+    // console.log(complete)
 
     const HandleVisibility = () => {
         setDisplay("none")
+        setComplete(true)
     }
 
-    const SelectionComplete = () => {
-        if(radio===""){
+    const HandleComplete = () => {
+        if (radio === "") {
             alert("Bill status not updated!")
             HandleVisibility()
+            setComplete(true)
         } else {
             HandleVisibility()
+            setComplete(true)
         }
+        onPopupComplete(radio)
     }
-    return <Container display={display}>
+
+    return <Container display={display} complete={complete}>
         <div>
             <Close src={close} onClick={HandleVisibility} />
         </div>
@@ -121,12 +129,13 @@ const Popup = () => {
             <FormRadio type="radio" value="PENDING" onChange={(e) => { setRadio(e.target.value) }} checked={radio === "PENDING"} /> <div style={{ color: "#FF8A00" }}>PENDING</div>
         </div>
         <div style={{ justifyContent: "center" }}>
-            <Button onClick={SelectionComplete}>OK</Button>
+            <Button onClick={HandleComplete}>OK</Button>
         </div>
 
     </Container>
 }
 Popup.defaultProps = {
     onClose: () => { },
+    onPopupComplete: () => { },
 }
 export default Popup;
