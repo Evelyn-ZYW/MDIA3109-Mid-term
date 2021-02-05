@@ -12,6 +12,7 @@ import {useHistory} from "react-router-dom";
 const Homepage = () => {
 
     const history = useHistory();
+    console.log(history);
 
     return <div className="homepage">
         <img src={citylogo} className="logo"/>
@@ -25,10 +26,10 @@ const Homepage = () => {
             <Bills />
         </div>
         <div className="buttons">
-            <span>
-            <Buttons text={'Add Bill'} onClick={()=>history.push('/addbill')}/>
+            <span onClick={()=>history.push('/addbill')}>
+            <Buttons text={'Add Bill'} />
             </span>
-            <span>
+            <span onClick={()=>history.push('/addtrans')}>
             <Buttons text={'Add Transaction'}/>
             </span>
         </div>

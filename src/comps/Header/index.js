@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import 'images/back.png';
 
+import {useHistory, useLocation} from "react-router-dom";
+
 
 const HeaderCont = styled.div`
     display:flex;
@@ -25,12 +27,12 @@ const HeaderCont = styled.div`
 
     .left {
         position:relative;
-        right:45px;
+        right:30px;
     }
 
     .right{
         position:relative;
-        left:12px;
+        left:20px;
     }
 
     div{
@@ -45,6 +47,19 @@ const HeaderCont = styled.div`
 
 
 const Header = ({ headText, iconRight, iconLeft, onSelectFilter }) => {
+
+    const history = useHistory();
+    const location = useLocation();
+    console.log(history);
+    console.log(location);
+
+    function MoveBack(){
+        if(location.pathname ==="/trans"){
+            history.push('/');
+        } else {
+            history.push('/trans');
+        }
+    }
     
     const [filterclicked, setFilterClicked] = useState(false);
     
@@ -59,7 +74,7 @@ const Header = ({ headText, iconRight, iconLeft, onSelectFilter }) => {
     }
 
     return <HeaderCont>
-        <img src={iconLeft} className="left" />
+        <img src={iconLeft} className="left" onClick={MoveBack}/>
         <div>{headText}</div>
         <img src={iconRight} className="right"
             onClick={HandleFilter}
