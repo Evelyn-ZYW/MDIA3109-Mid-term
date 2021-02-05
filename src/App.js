@@ -19,7 +19,7 @@ function App() {
       {/* <Main /> */}
       {/* <AddBills /> */}
       <TransPage />
-      <AddTransaction />
+
     </div>
   );
 }
