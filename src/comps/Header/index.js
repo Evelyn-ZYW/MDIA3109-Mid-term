@@ -35,7 +35,7 @@ const HeaderCont = styled.div`
 
     div{
         font-size:24px;
-        min-width:205px;
+        min-width:225px;
         max-width:205px;
         text-align:center;
     }
