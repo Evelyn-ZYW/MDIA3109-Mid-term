@@ -70,7 +70,6 @@ const FormRadio = styled.input.attrs({ type: 'radio' })`
 
 const Filter = () => {
     const [radio, setRadio] = useState("");
-
     const [display, setDisplay] = useState("block");
 
     const onApply = () => {

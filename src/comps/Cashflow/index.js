@@ -1,5 +1,7 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+
+import { useHistory, useLocation } from "react-router-dom";
 
 const Container = styled.div`
     border: 1px solid #002B54;
@@ -45,20 +47,27 @@ const Button = styled.div`
     }
 `;
 
-const Cashflow = ({ inc, exp, onContainerSelect }) => {
+const Cashflow = ({ inc, exp }) => {
 
-    const [net, setNet] = useState(Math.round((inc-exp)*100)/100);
+    const [net, setNet] = useState(Math.round((inc - exp) * 100) / 100);
+    const history = useHistory();
+    const location = useLocation();
 
+    const SeeMore = () => {
+        if (location.pathname === ('/')) {
+            history.push('/trans')
+        }
+    }
     return <Container>
-        <Subtitle>January Cash Flow</Subtitle>
+        <Subtitle><b>January Cash Flow</b></Subtitle>
         <div>
             <span>
                 <span>Income</span>
-                <span style={{color:"#2D7700"}}>{inc}</span>
+                <span style={{ color: "#2D7700" }}>{inc}</span>
             </span>
             <span>
                 <span>Expense</span>
-                <span style={{color:"#B80000"}}>{exp}</span>
+                <span style={{ color: "#B80000" }}>{exp}</span>
             </span>
         </div>
         <White>
@@ -66,7 +75,7 @@ const Cashflow = ({ inc, exp, onContainerSelect }) => {
                 <span>New Cash Inflow</span><span>{net}</span>
             </span>
         </White>
-        <Button onClick={onContainerSelect}>See More</Button>
+        <Button onClick={SeeMore}>See More</Button>
     </Container>
 }
 Cashflow.defaultProps = {

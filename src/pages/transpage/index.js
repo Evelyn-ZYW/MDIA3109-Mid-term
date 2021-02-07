@@ -12,7 +12,7 @@ import Stacy from 'images/a1.png';
 import Greg from 'images/a2.png';
 
 
-const TransPage = ({ fakedb }) => {
+const TransPage = () => {
     const [item, setItem] = useState([
         {
             id: 1,
@@ -61,23 +61,19 @@ const TransPage = ({ fakedb }) => {
         },
     ]
     );
-    const setData = (index, property, value) => {
-        let newItem = [...item];
-        newItem[index][property] = value;
-        setItem(newItem);
-    }
 
-    const [dispop, setDispop] = useState("none");
+    const [dispop, setDispop] = useState(null);
     const [disfil, setDisfil] = useState("none");
-    const [status, setStatus] = useState("");
+    const [update, setUpdate] = useState("");
+    const [selectedId, setSelectedID] = useState(null);
 
-    const ShowPopup = (clicked) => {
-        console.log("clicked " + clicked)
-        if (clicked === false) {
-            setDispop("display");
-        } else if (clicked === true) {
+    const TogglePopup = (id, complete) => {
+        if (complete === true) {
+            setDispop("display")
+        } else if (complete === false) {
             setDispop("none")
         }
+        setSelectedID(id)
     }
     const ShowFilter = (clickedfilter) => {
         if (clickedfilter === false) {
@@ -86,11 +82,18 @@ const TransPage = ({ fakedb }) => {
             setDisfil("none")
         }
     }
-    const HandleStatus = (radio) => {
-        console.log(radio)
-        setStatus(radio);
+    const HandleStatus = (id, status, update) => {
+        let newItem = [...item];
+        newItem[id][status] = update;
+        setUpdate(newItem);
     }
-
+    /*
+      const setData = (index, property, value) => {
+          let newItem = [...item];
+          newItem[index][property] = value;
+          setItem(newItem);
+      }
+  */
     return <div className="main">
         <Header
             iconLeft={iconLeft}
@@ -98,26 +101,50 @@ const TransPage = ({ fakedb }) => {
             iconRight={iconRight}
             onSelectFilter={ShowFilter}
         />
-        <Date />
+        {disfil === "display" ? <Filter /> : ""}
+        <Date dateText="Bill" />
         {item.map(o => <div>
-
-            {dispop === "display" ? <Popup
-                onPopupComplete={HandleStatus}
+            {selectedId === o.id ? <Popup
+                id={o.id}
+                onPopupClose={HandleStatus}
                 src={o.name === "Stacy" ? Stacy : Greg}
                 title={o.title}
                 type={o.type}
                 amount={o.amount}
                 description={o.description}
+                display={selectedId === o.id}
             /> : ""}
-            {disfil === "display" ? <Filter /> : ""}
-            <Transaction
-                onTransSelect={ShowPopup}
+            {o.type === "Bill" ? <Transaction
+                id={o.id}
+                onTransSelect={TogglePopup}
                 src={o.name === "Stacy" ? Stacy : Greg}
                 title={o.title}
-                amount={"$ "+o.amount}
+                amount={"$ " + o.amount}
                 status={o.status}
-            />
-
+                highlight={selectedId === o.id}
+            /> : ""}
+        </div>)}
+        <Date dateText="Transactions" />
+        {item.map(o => <div>
+            {selectedId === o.id ? <Popup
+                id={o.id}
+                onPopupClose={TogglePopup}
+                src={o.name === "Stacy" ? Stacy : Greg}
+                title={o.title}
+                type={o.type}
+                amount={o.amount}
+                description={o.description}
+                display={selectedId === o.id}
+            /> : ""}
+            {o.type === "Expense" || o.type === "Income" ? <Transaction
+                id={o.id}
+                onTransSelect={TogglePopup}
+                src={o.name === "Stacy" ? Stacy : Greg}
+                title={o.title}
+                amount={"$ " + o.amount}
+                status={o.status}
+                highlight={selectedId === o.id}
+            /> : ""}
         </div>)}
 
     </div>

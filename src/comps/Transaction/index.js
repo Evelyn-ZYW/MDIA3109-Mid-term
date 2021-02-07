@@ -5,7 +5,7 @@ import a1 from 'images/a1.png';
 const Container = styled.div`
     min-width:375px;
     min-height:108px;
-    background: ${props => props.bgcolor ? props.bgcolor : "#FFF"};
+    ${props => props.highlight && "background: rgba(189, 155, 82, 0.25)"};
     position: relative;
     display: flex;
     flex-direction: column;
@@ -44,13 +44,14 @@ const Line3 = styled.div`
     height: 1px;
     position: absolute;
     left: 7%;
-    bottom: 0px;
+    bottom: -1px;
     border-bottom: 1px solid #002B54;
 `;
 
 
-const Transaction = ({ onTransSelect, title, src, amount, status }) => {
+const Transaction = ({ onTransSelect, id, title, src, amount, status, highlight }) => {
 
+    /*
     const [bgcolor, setBgcolor] = useState("white");
     const [clicked, setClicked] = useState(false);
 
@@ -66,14 +67,19 @@ const Transaction = ({ onTransSelect, title, src, amount, status }) => {
         }
         onTransSelect(clicked);
     }
+    */
 
-    return <Container onClick={HandleTransSelect} bgcolor={bgcolor} clicked={clicked}>
-            <Line1>
-                <span><img src={src} />{title}</span>
-                <span>{amount}</span>
-            </Line1>
-            <Line2>{status}</Line2>
-            <Line3 />
+    const HandleTransSelect = () => {
+        onTransSelect(id);
+    }
+
+    return <Container highlight={highlight} onClick={HandleTransSelect}>
+        <Line1>
+            <span><img src={src} />{title}</span>
+            <span>{amount}</span>
+        </Line1>
+        <Line2>{status}</Line2>
+        <Line3 />
     </Container>
 
 }
