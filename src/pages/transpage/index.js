@@ -61,24 +61,20 @@ const TransPage = () => {
         },
     ]
     );
-    const setData = (index, property, value) => {
-        let newItem = [...item];
-        newItem[index][property] = value;
-        setItem(newItem);
-    }
 
-    const [dispop, setDispop] = useState("none");
+    const [dispop, setDispop] = useState(null);
     const [disfil, setDisfil] = useState("none");
-    const [status, setStatus] = useState("");
+    const [updatestatus, setUpdateStatus] = useState("");
     const [selectedId, setSelectedID] = useState(null);
 
-    const TogglePopup = (id, complete) => {
-        if(complete === true){
+    const TogglePopup = (id, complete, status) => {
+        if (complete === true) {
             setDispop("display")
-        } else if (complete === false){
+        } else if (complete === false) {
             setDispop("none")
         }
         setSelectedID(id)
+        setUpdateStatus(status)
     }
     const ShowFilter = (clickedfilter) => {
         if (clickedfilter === false) {
@@ -87,12 +83,14 @@ const TransPage = () => {
             setDisfil("none")
         }
     }
-    const HandleStatus = (radio) => {
-        console.log(radio)
-        setStatus(radio);
-    }
-  
 
+    /*
+      const setData = (index, property, value) => {
+          let newItem = [...item];
+          newItem[index][property] = value;
+          setItem(newItem);
+      }
+  */
     return <div className="main">
         <Header
             iconLeft={iconLeft}
