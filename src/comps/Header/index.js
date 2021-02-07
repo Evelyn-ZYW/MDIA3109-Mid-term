@@ -23,6 +23,9 @@ const HeaderCont = styled.div`
         max-height:28px;
         min-width:15px;
         max-height:28px;
+        &: hover {
+            cursor: pointer;
+        }
     }
 
     .left {
@@ -50,8 +53,6 @@ const Header = ({ headText, iconRight, iconLeft, onSelectFilter }) => {
 
     const history = useHistory();
     const location = useLocation();
-    console.log(history);
-    console.log(location);
 
     function MoveBack(){
         if(location.pathname ==="/trans"){

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import close from "images/close.png";
-import a1 from "images/a1.png";
 
 const Container = styled.div`
     z-index: 1;
@@ -15,44 +14,47 @@ const Container = styled.div`
     position: absolute;
     top: 20%;
     left: 5%;
-    display: ${props => props.display ? props.display : "flex"};
-    flex-direction: column;
+    ${props => props.display && "display: flex;"};
+    flex-direction: column; 
     justify-content: space-around;
+
     & > div {
-        margin: 15px 25px;
-        position: relative;
-        display: flex;
-        justify-content: ${props => props.jc ? props.js : "space-between"};
-        & > img {
-            max-width: ${props => props.maxwidth ? props.maxwidth : "67px"};
-            max-height: ${props => props.maxheight ? props.maxheight : "67px"};
-        }
+    margin: 15px 25px;
+    position: relative;
+    display: flex;
+    justify-content: ${props => props.jc ? props.js : "space-between"};
+
         & > span {
-            display:flex;
-            flex-direction: column;
-            min-width: 70%;
-            color: ${props => props.color ? props.color : "black"};
+        display: flex;
+        flex-direction: column;
+        min-width: 70%;
+        color: ${props => props.color ? props.color : "black"};
 
             & > span {
-                display:flex;
-                justify-content: space-between;
-                padding: 8px;
+            display: flex;
+            justify-content: space-between;
+            padding: 8px;
                 & > span{
-                    display:flex;
-                }
+                display: flex;
             }
         }
     }
+}
 
 `;
+const Img = styled.img`
+    max-width: ${props => props.maxwidth ? props.maxwidth : "67px"};
+    max-height: ${props => props.maxheight ? props.maxheight : "67px"};
+`;
+
 const FormRadio = styled.input.attrs({ type: 'radio' })`
-    margin-right: 10px;
-    &:after{
-        background: white;
-    }
-    &:hover{
-        cursor: pointer;
-    }
+margin-right: 10px;
+    &: after{
+    background: white;
+}
+    &: hover{
+    cursor: pointer;
+}
 `;
 const Button = styled.button`
     min-width: 122px;
@@ -64,77 +66,87 @@ const Button = styled.button`
     border-radius: 6px;
     border: none;
     outline: none;
-    &:active{
+        &: active{
         box-shadow: 0 3 px #666;
         transform: translateY(2px);
     }
-    &:hover{
+        &: hover{
         cursor: pointer;
     }
 `;
 const Close = styled.img`
     position: relative;
     right: -91%;
-    &:hover{
+        &: hover{
         cursor: pointer;
     }
 `;
 
-const Popup = ({ onPopupComplete, title, src, type, amount,description }) => {
+const Popup = ({ onPopupClose, id, title, src, type, amount, description, display }) => {
 
     const [radio, setRadio] = useState("");
-    const [display, setDisplay] = useState("flex");
-    const [complete, setComplete] = useState(false)
-
-    // console.log(complete)
-
-    const HandleVisibility = () => {
-        setDisplay("none")
-        setComplete(true)
-    }
-
-    const HandleComplete = () => {
-        if (radio === "") {
-            alert("Bill status not updated!")
-            HandleVisibility()
-            setComplete(true)
-        } else {
-            HandleVisibility()
+    const [complete, setComplete] = useState(null)
+    /*
+        // const [display, setDisplay] = useState("flex");
+        // console.log(complete)
+    
+        const HandleVisibility = () => {
+            setDisplay("none")
             setComplete(true)
         }
-        onPopupComplete(radio)
+    
+        const HandleComplete = () => {
+            if (radio === "") {
+                alert("Bill status not updated!")
+                HandleVisibility()
+                setComplete(true)
+            } else {
+                HandleVisibility()
+                setComplete(true)
+            }
+            onPopupComplete(radio)
+        }
+    */
+    const ClosePopup = () => {
+        if (radio === "") {
+            alert("Bill status not updated!")
+            setComplete(complete)
+        } else {
+            setComplete(complete)
+        }
+        onPopupClose(radio)
+        setComplete(complete)
     }
 
-    return <Container display={display} complete={complete}>
-            <div>
-                <Close src={close} onClick={HandleVisibility} />
-            </div>
-            <div>
-                <img src={src} />
+    return <Container display={display} id={id}>
+        <div>
+            <Close src={close} onClick={ClosePopup} />
+        </div>
+        <div>
+            <Img src={src} />
+            <span>
+                <span>{title}</span>
                 <span>
-                    <span>{title}</span>
-                    <span>
-                        <span style={{ color: "#B80000" }}>{type}</span>
-                        <span>{amount}</span>
-                    </span>
+                    <span style={{ color: "#B80000" }}>{type}</span>
+                    <span>{amount}</span>
                 </span>
-            </div>
-            <div>
-                <span>
-                    <span>{description}</span>
-                </span>
-            </div>
-            <div>
-                <FormRadio type="radio" value="PAID" onChange={(e) => { setRadio(e.target.value) }} checked={radio === "PAID"} /> <div style={{ color: "#2D7700" }} >PAID</div>
-                <FormRadio type="radio" value="PENDING" onChange={(e) => { setRadio(e.target.value) }} checked={radio === "PENDING"} /> <div style={{ color: "#FF8A00" }}>PENDING</div>
-            </div>
-            <div style={{ justifyContent: "center" }}>
-                <Button onClick={HandleComplete}>OK</Button>
-            </div>
-            </Container>
+            </span>
+        </div>
+        <div>
+            <span>
+                <span>{description}</span>
+            </span>
+        </div>
+        <div>
+            <FormRadio type="radio" value="PAID" onChange={(e) => { setRadio(e.target.value) }} checked={radio === "PAID"} /> <div style={{ color: "#2D7700" }} >PAID</div>
+            <FormRadio type="radio" value="PENDING" onChange={(e) => { setRadio(e.target.value) }} checked={radio === "PENDING"} /> <div style={{ color: "#FF8A00" }}>PENDING</div>
+        </div>
+        <div style={{ justifyContent: "center" }}>
+            <Button onClick={ClosePopup}>OK</Button>
+        </div>
+    </Container>
 }
 Popup.defaultProps = {
-    onClose: () => { },
-    onPopupComplete: () => { },
+    onPopupClose: () => { },
 }
 export default Popup;
