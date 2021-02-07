@@ -64,17 +64,16 @@ const TransPage = () => {
 
     const [dispop, setDispop] = useState(null);
     const [disfil, setDisfil] = useState("none");
-    const [updatestatus, setUpdateStatus] = useState("");
+    const [update, setUpdate] = useState("");
     const [selectedId, setSelectedID] = useState(null);
 
-    const TogglePopup = (id, complete, status) => {
+    const TogglePopup = (id, complete) => {
         if (complete === true) {
             setDispop("display")
         } else if (complete === false) {
             setDispop("none")
         }
         setSelectedID(id)
-        setUpdateStatus(status)
     }
     const ShowFilter = (clickedfilter) => {
         if (clickedfilter === false) {
@@ -83,7 +82,11 @@ const TransPage = () => {
             setDisfil("none")
         }
     }
-
+    const HandleStatus = (id, status, update) => {
+        let newItem = [...item];
+        newItem[id][status] = update;
+        setUpdate(newItem);
+    }
     /*
       const setData = (index, property, value) => {
           let newItem = [...item];
@@ -98,9 +101,31 @@ const TransPage = () => {
             iconRight={iconRight}
             onSelectFilter={ShowFilter}
         />
-        <Date />
+        {disfil === "display" ? <Filter /> : ""}
+        <Date dateText="Bill" />
         {item.map(o => <div>
-
+            {selectedId === o.id ? <Popup
+                id={o.id}
+                onPopupClose={HandleStatus}
+                src={o.name === "Stacy" ? Stacy : Greg}
+                title={o.title}
+                type={o.type}
+                amount={o.amount}
+                description={o.description}
+                display={selectedId === o.id}
+            /> : ""}
+            {o.type === "Bill" ? <Transaction
+                id={o.id}
+                onTransSelect={TogglePopup}
+                src={o.name === "Stacy" ? Stacy : Greg}
+                title={o.title}
+                amount={"$ " + o.amount}
+                status={o.status}
+                highlight={selectedId === o.id}
+            /> : ""}
+        </div>)}
+        <Date dateText="Transactions" />
+        {item.map(o => <div>
             {selectedId === o.id ? <Popup
                 id={o.id}
                 onPopupClose={TogglePopup}
@@ -111,8 +136,7 @@ const TransPage = () => {
                 description={o.description}
                 display={selectedId === o.id}
             /> : ""}
-            {disfil === "display" ? <Filter /> : ""}
-            <Transaction
+            {o.type === "Expense" || o.type === "Income" ? <Transaction
                 id={o.id}
                 onTransSelect={TogglePopup}
                 src={o.name === "Stacy" ? Stacy : Greg}
@@ -120,7 +144,7 @@ const TransPage = () => {
                 amount={"$ " + o.amount}
                 status={o.status}
                 highlight={selectedId === o.id}
-            />
+            /> : ""}
         </div>)}
 
     </div>

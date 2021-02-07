@@ -44,7 +44,7 @@ const Line3 = styled.div`
     height: 1px;
     position: absolute;
     left: 7%;
-    bottom: 0px;
+    bottom: -1px;
     border-bottom: 1px solid #002B54;
 `;
 

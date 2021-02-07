@@ -116,6 +116,7 @@ const Popup = ({ onPopupClose, id, title, src, type, amount, description, displa
         }
         onPopupClose(radio)
         setComplete(complete)
+        // console.log("Radio " + radio)
     }
 
     return <Container display={display} id={id}>

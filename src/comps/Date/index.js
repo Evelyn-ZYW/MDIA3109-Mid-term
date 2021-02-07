@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 
 const DateCont = styled.div`
+    z-index: 1;
     min-width:375px;
     max-width:375px;
     font-size:18px;
@@ -19,14 +20,14 @@ const DateCont = styled.div`
 `;
 
 
-const Date = ({dateText})=>{
+const Date = ({ dateText }) => {
     return <DateCont>
         <div>{dateText}</div>
     </DateCont>
 }
 
 Date.defaultProps = {
-dateText:"Thu, jan 07, 2021"
+    dateText: "Thu, Jan 07, 2021"
 }
 
 export default Date;

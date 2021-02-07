@@ -59,7 +59,7 @@ const Cashflow = ({ inc, exp }) => {
         }
     }
     return <Container>
-        <Subtitle>January Cash Flow</Subtitle>
+        <Subtitle><b>January Cash Flow</b></Subtitle>
         <div>
             <span>
                 <span>Income</span>
