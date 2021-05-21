@@ -10,7 +10,7 @@ import 'pages/Homepage/homepage.scss';
 import 'pages/AddBills/addbills.scss';
 import 'pages/AddTransaction/addtransaction.scss';
 import AddTransaction from 'pages/AddTransaction';
-import RadioButtons from 'comps/RadioButtons';
+import RadioButton from 'comps/RadioButton';
 
 import {
   BrowserRouter as Router,

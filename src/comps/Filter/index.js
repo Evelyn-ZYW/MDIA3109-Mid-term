@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-    z-index: 1;
+    z-index: 2;
     border: 2px solid #B7B7B7;
     border-radius: 10px;
     min-width: 326px;

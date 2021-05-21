@@ -3,7 +3,7 @@ import Headers from 'comps/Header';
 import iconLeft from 'images/back.png';
 import TransTitle from 'comps/TransTitle';
 import Buttons from 'comps/Button';
-import RadioButtons from 'comps/RadioButtons';
+import RadioButton from 'comps/RadioButton';
 
 import {useHistory, useLocation} from "react-router-dom";
 
@@ -16,7 +16,8 @@ const AddTransaction = () => {
     return <div className="addtransaction">
         <Headers headText={'Add/Edit Transaction'} iconLeft={iconLeft} />
         <div className='radiobuttons'>
-            <RadioButtons />
+            <RadioButton text="Income"/>
+            <RadioButton text="Expense"/>
         </div>
         <div className='input1'>
             <TransTitle text={'Transaction Title'}/>

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { useHistory, useLocation } from "react-router-dom";
 
 const Container = styled.div`
-    border: 1px solid #002B54;
+    // border: 1px solid #002B54;
     border-radius: 10px;
     background-color: #C7DEEC;
     min-width: 346px;
@@ -14,6 +14,8 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+
     & > div{
         display:flex;
         flex-direction: column;
@@ -34,7 +36,7 @@ const White = styled.div`
     max-width: 346px;
 `;
 const Subtitle = styled.div`
-    border-bottom: 1px solid #002B54;
+    border-bottom: 1px solid #8395A4;
     color: #002B54;
     align-items: center;
     margin: 0 15px;
@@ -59,7 +61,7 @@ const Cashflow = ({ inc, exp }) => {
         }
     }
     return <Container>
-        <Subtitle><b>January Cash Flow</b></Subtitle>
+        <Subtitle><h4>January Cash Flow</h4></Subtitle>
         <div>
             <span>
                 <span>Income</span>
