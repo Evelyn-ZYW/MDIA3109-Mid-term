@@ -71,7 +71,7 @@ const Header = ({ headText, iconRight, iconLeft, onSelectFilter }) => {
     <HeaderCont>
       <img src={iconLeft} className="left" onClick={MoveBack} />
       <div>{headText}</div>
-      <img src={iconRight} className="right" onClick={HandleFilter} />
+      {/* <img src={iconRight} className="right" onClick={HandleFilter} /> */}
     </HeaderCont>
   );
 };

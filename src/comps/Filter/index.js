@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import RadioButton from "../RadioButton";
+import React, { useState, useEffect } from 'react'
+import styled from 'styled-components'
+import RadioButton from '../RadioButton'
 
 const Container = styled.div`
   z-index: 2;
@@ -10,12 +10,12 @@ const Container = styled.div`
   max-width: 326px;
   min-height: 243px;
   max-height: 243px;
-  background-color: rgba(238, 238, 238, 0.9);
+  background-color: rgba(255, 255, 255, 0.9);
   position: absolute;
   top: 65px;
   left: 6%;
-  display: ${(props) => (props.display ? props.display : "block")};
-`;
+  display: ${(props) => (props.display ? props.display : 'block')};
+`
 const ContOne = styled.div`
   display: flex;
   flex-direction: column;
@@ -26,7 +26,7 @@ const ContOne = styled.div`
   min-height: 75%;
   max-height: 75%;
   margin-top: 20px;
-`;
+`
 const ContTwo = styled.div`
   min-width: 326px;
   max-width: 326px;
@@ -34,7 +34,7 @@ const ContTwo = styled.div`
   justify-content: space-around;
   position: absolute;
   bottom: 25px;
-`;
+`
 const Button = styled.button`
   min-width: 108px;
   max-width: 108px;
@@ -49,7 +49,7 @@ const Button = styled.button`
     box-shadow: 0 3 px #666;
     transform: translateY(2px);
   }
-`;
+`
 
 const Option = styled.div`
   display: flex;
@@ -58,8 +58,8 @@ const Option = styled.div`
   max-height: 30px;
   align-items: center;
   margin: 10px 0 10px 0;
-  color: ${(props) => (props.color ? props.color : "#2D7700")};
-`;
+  color: ${(props) => (props.color ? props.color : '#2D7700')};
+`
 
 // const FormRadio = styled.input.attrs({ type: "radio" })`
 //   margin-right: 10px;
@@ -69,15 +69,11 @@ const Option = styled.div`
 // `;
 
 const Filter = ({ onRadioSelect, onApply }) => {
-  const [display, setDisplay] = useState("block");
-
-  // const onApply = () => {
-  //   setDisplay("none");
-  // };
+  const [display, setDisplay] = useState('block')
 
   const onClose = () => {
-    setDisplay("none");
-  };
+    setDisplay('none')
+  }
 
   return (
     <Container display={display}>
@@ -127,7 +123,7 @@ const Filter = ({ onRadioSelect, onApply }) => {
         <Button onClick={onApply}>APPLY</Button>
       </ContTwo>
     </Container>
-  );
-};
-Filter.defaultProps = {};
-export default Filter;
+  )
+}
+Filter.defaultProps = {}
+export default Filter

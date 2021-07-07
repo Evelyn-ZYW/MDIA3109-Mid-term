@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import close from "images/close.png";
-import RadioButton from "../RadioButton";
+import React, { useState } from 'react'
+import styled from 'styled-components'
+import close from 'images/close.png'
+import RadioButton from '../RadioButton'
 
 const Container = styled.div`
   z-index: 1;
@@ -15,21 +15,21 @@ const Container = styled.div`
   position: absolute;
   top: 20%;
   left: 5%;
-  ${(props) => props.display && "display: flex;"};
+  ${(props) => props.display && 'display: flex;'};
   flex-direction: column;
   justify-content: space-around;
-`;
+`
 const Row = styled.div`
   margin: 15px 25px;
   position: relative;
   display: flex;
-  justify-content: ${(props) => (props.jc ? props.js : "space-between")};
+  justify-content: ${(props) => (props.jc ? props.js : 'space-between')};
 
   & > span {
     display: flex;
     flex-direction: column;
     min-width: 70%;
-    color: ${(props) => (props.color ? props.color : "#002B54")};
+    color: ${(props) => (props.color ? props.color : '#002B54')};
 
     & > span {
       display: flex;
@@ -40,11 +40,11 @@ const Row = styled.div`
       }
     }
   }
-`;
+`
 const Img = styled.img`
-  max-width: ${(props) => (props.maxwidth ? props.maxwidth : "67px")};
-  max-height: ${(props) => (props.maxheight ? props.maxheight : "67px")};
-`;
+  max-width: ${(props) => (props.maxwidth ? props.maxwidth : '67px')};
+  max-height: ${(props) => (props.maxheight ? props.maxheight : '67px')};
+`
 
 // const FormRadio = styled.input.attrs({ type: "radio" })`
 //   margin-right: 10px;
@@ -56,16 +56,18 @@ const Img = styled.img`
 //   }
 // `;
 const RadioButtonCont = styled.div`
-  // display: ${(props) => (props.displayRadio ? props.displayRadio : "flex")};
-  // display: ${(props) => props.displayRadio && "display: flex;"};
-  display: ${({ displayRadio }) => (displayRadio ? "flex" : "none")};
+  display: ${(props) => (props.displayRadio ? props.displayRadio : 'none')};
+  // display: ${({ displayRadio }) => (displayRadio ? 'flex' : 'none')};
+  // ${(props) => props.displayRadio && 'display: flex;'};
+  // ${(displayRadio) => displayRadio && 'display: flex;'};
+  // display: flex;
   align-items: center;
   justify-content: space-around;
-`;
+`
 const ButtonCont = styled.div`
   display: flex;
   justify-content: center;
-`;
+`
 const Button = styled.button`
   min-width: 122px;
   max-width: 122px;
@@ -83,7 +85,7 @@ const Button = styled.button`
   &: hover {
     cursor: pointer;
   }
-`;
+`
 const Close = styled.img`
   position: relative;
   right: -95%;
@@ -92,11 +94,11 @@ const Close = styled.img`
   &: hover {
     cursor: pointer;
   }
-`;
+`
 const Type = styled.span`
-  color: ${(props) => (props.color ? props.color : "")};
-`;
-const PopupBill = ({
+  color: ${(props) => (props.color ? props.color : '')};
+`
+const Popup = ({
   onPopupClose,
   id,
   title,
@@ -108,9 +110,10 @@ const PopupBill = ({
   color,
   onRadioSelect,
   onClick,
+  displayRadio,
 }) => {
-  const [radio, setRadio] = useState("");
-  const [complete, setComplete] = useState(null);
+  const [radio, setRadio] = useState('')
+  const [complete, setComplete] = useState(null)
   /*
         // const [display, setDisplay] = useState("flex");
         // console.log(complete)
@@ -146,11 +149,11 @@ const PopupBill = ({
   };
 */
   const ClosePopup = () => {
-    setComplete(complete);
-    onPopupClose(radio);
-    setComplete(complete);
-    console.log("Radio: ", radio);
-  };
+    setComplete(complete)
+    onPopupClose(radio)
+    setComplete(complete)
+    console.log('Radio: ', radio)
+  }
 
   return (
     <Container display={display} id={id}>
@@ -173,10 +176,11 @@ const PopupBill = ({
         </span>
       </Row>
 
-      <RadioButtonCont>
-        <RadioButton text="PAID" onRadioSelect={onRadioSelect} />
-        <RadioButton text="PENDING" onRadioSelect={onRadioSelect} />
-      </RadioButtonCont>
+        <RadioButtonCont display={displayRadio}>
+          <RadioButton text="PAID" onRadioSelect={onRadioSelect} />
+          <RadioButton text="PENDING" onRadioSelect={onRadioSelect} />
+        </RadioButtonCont>
+
 
       {/* <FormRadio
           type="radio"
@@ -200,10 +204,10 @@ const PopupBill = ({
         <Button onClick={onClick}>OK</Button>
       </ButtonCont>
     </Container>
-  );
-};
-PopupBill.defaultProps = {
+  )
+}
+Popup.defaultProps = {
   onPopupClose: () => {},
   onRadioSelect: () => {},
-};
-export default PopupBill;
+}
+export default Popup
