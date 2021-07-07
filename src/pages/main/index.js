@@ -7,7 +7,7 @@ import Cashflow from 'comps/Cashflow';
 import Popup from 'comps/Popup';
 import Profile from 'comps/Profile';
 import Header from 'comps/Header';
-import Date from 'comps/Date';
+import Subtitle from 'comps/Subtitle';
 
 const Main = () => {
 

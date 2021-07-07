@@ -1,18 +1,22 @@
 .App {
   width: 100vw;
   height: 100vh;
-  background-color: #E5E5E5;
+  background-color: #e5e5e5;
   display: flex;
   justify-content: center;
-  // transition: 0.3s;
+
+  input:focus,
+  textarea:focus
+   {
+    outline: none;
+  }
 
   h1,
   h2,
   h3,
-  h4, 
-  h5, 
-  h6 
-  {
+  h4,
+  h5,
+  h6 {
     padding: 0;
     margin: 0;
   }
@@ -28,14 +32,14 @@
     -ms-user-select: none;
     user-select: none;
   }
-  
+
   /* Hide the browser's default radio button */
   .container input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
   }
-  
+
   /* Create a custom radio button */
   .checkmark {
     position: absolute;
@@ -44,34 +48,34 @@
     height: 1.625rem;
     width: 1.625rem;
     box-sizing: border-box;
-    border: 0.188rem solid #8395A4;
+    border: 0.188rem solid #8395a4;
     border-radius: 50%;
     transition: 0.3s;
   }
-  
+
   /* On mouse-over, enhance opacity */
   .container:hover input ~ .checkmark {
-    border: 0.188rem solid #002B54;
+    border: 0.188rem solid #002b54;
   }
-  
+
   /* When the radio button is checked, add a blue background */
   .container input:checked ~ .checkmark {
-    background-color: #002B54;
-    border: 0.188rem solid #002B54;
+    background-color: #002b54;
+    border: 0.188rem solid #002b54;
   }
-  
+
   /* Create the indicator (the dot/circle - hidden when not checked) */
   .checkmark:after {
     content: "";
     position: absolute;
     display: none;
   }
-  
+
   /* Show the indicator (dot/circle) when checked */
   .container input:checked ~ .checkmark:after {
     display: block;
   }
-  
+
   /* Style the indicator (dot/circle) */
   .container .checkmark:after {
     top: 0.188rem;
@@ -80,7 +84,7 @@
     height: 0.875rem;
     border-radius: 50%;
     background: white;
-  }  
+  }
 }
 
 //below step is to use scss on the imported page
@@ -88,4 +92,3 @@
 @import "./pages/AddBills/addbills.scss";
 @import "./pages/Homepage/homepage.scss";
 @import "./pages/transpage/transpage.scss";
-

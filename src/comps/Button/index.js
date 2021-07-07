@@ -17,7 +17,7 @@ const Button = styled.button`
     margin:10px;
     cursor:pointer;
     font-weight:bold;
-    font-size:${props => props.fontSize ? props.fontSize : "12px"};
+    font-size:${props => props.fontSize ? props.fontSize : "16px"};
     transition: 0.3s;
     
     :hover {

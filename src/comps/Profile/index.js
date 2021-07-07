@@ -14,7 +14,7 @@ const ProfileCont = styled.div`
     flex-direction:column;
     jsutify-content:center;
     align-items:center;
-    font-size: 18px;
+    font-size: 16px;
     box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
 `;
 
@@ -30,7 +30,7 @@ const ProfileOne = styled.button`
     background-color:${props => props.checked ? "#BD9B52" : "#FFFFFF"};
     text-align: center;
     text-decoration: none;
-    color:${props => props.checked ? "#FFFFFF" : "#000000"};
+    color:${props => props.checked ? "#FFFFFF" : "#002B54"};
     font-size: 16px;
     cursor: pointer;
     font-weight:500;
@@ -44,7 +44,7 @@ const ProfileTwo = styled.button`
     margin-top:30px;
     padding: 5px 35px;
     background-color:${props => props.checked ? "#BD9B52" : "#FFFFFF"};
-    color:${props => props.checked ? "#FFFFFF" : "#000000"};
+    color:${props => props.checked ? "#FFFFFF" : "#002B54"};
     text-align: center;
     text-decoration: none;
     font-size: 16px;
@@ -61,7 +61,7 @@ const Allprofile = styled.button`
     margin-top:30px;
     padding: 5px 35px;
     background-color:${props => props.checked ? "#BD9B52" : "#FFFFFF"};
-    color:${props => props.checked ? "#FFFFFF" : "#000000"};
+    color:${props => props.checked ? "#FFFFFF" : "#002B54"};
     text-align: center;
     text-decoration: none;
     font-size: 16px;
@@ -98,6 +98,7 @@ const AccountNum = styled.div`
     min-width: 40%;
     max-width: 40%;
     text-align: center;
+    color: #002B54;
 `;
 
 
