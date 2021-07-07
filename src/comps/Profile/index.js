@@ -126,11 +126,11 @@ const Profile = ({ name1, name2, account }) => {
         <Titles>
             <ProfileOne checked={checked === 1} onClick={() => {
                 setChecked(1);
-            }}><h4>{name1}</h4></ProfileOne><Allprofile checked={checked === true} onClick={() => {
+            }}><span>{name1}</span></ProfileOne><Allprofile checked={checked === true} onClick={() => {
                 setChecked(true);
-            }}><h4>All</h4></Allprofile><ProfileTwo checked={checked === 2} onClick={() => {
+            }}><span>All</span></Allprofile><ProfileTwo checked={checked === 2} onClick={() => {
                 setChecked(2);
-            }}><h4>{name2}</h4></ProfileTwo>
+            }}><span>{name2}</span></ProfileTwo>
         </Titles>
         <SecondRow>
             <img src={a1} onClick={() => {
