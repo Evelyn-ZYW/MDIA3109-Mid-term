@@ -16,7 +16,7 @@ const Button = styled.button`
   margin: 10px;
   cursor: pointer;
   font-weight: bold;
-  font-size: ${(props) => (props.fontSize ? props.fontSize : "16px")};
+  font-size: ${(props) => (props.fontSize ? props.fontSize : "12px")};
   transition: 0.3s;
 
   :hover {
@@ -43,7 +43,6 @@ const Buttons = ({ text, width, height, fontSize, onClick }) => {
 Buttons.defaultProps = {
   text: "hi",
   width: "141px",
-  height: "33px",
-  fontSize: "16px",
+  height: "33px"
 };
 export default Buttons;

@@ -9,17 +9,15 @@ const HeaderCont = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background-color: #c7deec;
+  background-color: ${props=>props.bgcolor?props.bgcolor: "#c7deec"};
   min-width: 375px;
   min-height: 65px;
   color: #002b54;
   top: 0px;
 
   img {
-    max-width: 30px;
-    max-height: 28px;
-    min-width: 15px;
-    max-height: 28px;
+    max-height: 18px;
+    max-height: 18px;
     &: hover {
       cursor: pointer;
     }
@@ -43,7 +41,7 @@ const HeaderCont = styled.div`
   }
 `;
 
-const Header = ({ headText, iconRight, iconLeft, onSelectFilter }) => {
+const Header = ({ headText, bgcolor, iconRight, iconLeft, onSelectFilter }) => {
   const history = useHistory();
   const location = useLocation();
 
@@ -68,7 +66,7 @@ const Header = ({ headText, iconRight, iconLeft, onSelectFilter }) => {
   console.log("Filter Clicked: " + expand);
 
   return (
-    <HeaderCont>
+    <HeaderCont bgcolor={bgcolor}>
       <img src={iconLeft} className="left" onClick={MoveBack} />
       <div>{headText}</div>
       {/* <img src={iconRight} className="right" onClick={HandleFilter} /> */}
