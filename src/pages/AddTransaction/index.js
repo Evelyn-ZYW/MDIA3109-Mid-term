@@ -33,7 +33,7 @@ const AddTransaction = () => {
         <Buttons
           width={"308px"}
           height={"52px"}
-          fontSize={"22px"}
+          fontSize={"16px"}
           text={"Add"}
         />
       </div>
