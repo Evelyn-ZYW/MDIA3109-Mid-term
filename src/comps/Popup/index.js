@@ -1,35 +1,42 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
-import close from 'images/close.png'
-import RadioButton from '../RadioButton'
+import React, { useState } from "react";
+import styled from "styled-components";
+import close from "images/close.png";
+import RadioButton from "../RadioButton";
+import Button from "../Button";
 
 const Container = styled.div`
   z-index: 1;
-  min-width: 332px;
-  max-width: 332px;
-  min-height: 423px;
-  max-height: 432px;
-  border: 2px solid #b7b7b7;
+  // min-width: 332px;
+  // max-width: 332px;
+  // min-height: 423px;
+  // max-height: 432px;
+  min-width: 300px;
+  max-width: 300px;
+  min-height: 300px;
+  max-height: 300px;
   border-radius: 20px;
-  background-color: rgba(255, 255, 255, 0.9);
+  // background-color: rgba(255, 255, 255, 0.9);
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   position: absolute;
-  top: 20%;
-  left: 5%;
-  ${(props) => props.display && 'display: flex;'};
+  top: 30%;
+  left: 10%;
+  ${(props) => props.display && "display: flex;"};
   flex-direction: column;
-  justify-content: space-around;
-`
+  // justify-content: space-around;
+  justify-content: center;
+`;
 const Row = styled.div`
   margin: 15px 25px;
   position: relative;
   display: flex;
-  justify-content: ${(props) => (props.jc ? props.js : 'space-between')};
+  justify-content: ${(props) => (props.jc ? props.js : "space-between")};
 
   & > span {
     display: flex;
     flex-direction: column;
     min-width: 70%;
-    color: ${(props) => (props.color ? props.color : '#002B54')};
+    color: ${(props) => (props.color ? props.color : "#002B54")};
 
     & > span {
       display: flex;
@@ -40,11 +47,11 @@ const Row = styled.div`
       }
     }
   }
-`
+`;
 const Img = styled.img`
-  max-width: ${(props) => (props.maxwidth ? props.maxwidth : '67px')};
-  max-height: ${(props) => (props.maxheight ? props.maxheight : '67px')};
-`
+  max-width: ${(props) => (props.maxwidth ? props.maxwidth : "67px")};
+  max-height: ${(props) => (props.maxheight ? props.maxheight : "67px")};
+`;
 
 // const FormRadio = styled.input.attrs({ type: "radio" })`
 //   margin-right: 10px;
@@ -56,48 +63,32 @@ const Img = styled.img`
 //   }
 // `;
 const RadioButtonCont = styled.div`
-  display: ${(props) => (props.displayRadio ? props.displayRadio : 'none')};
-  // display: ${({ displayRadio }) => (displayRadio ? 'flex' : 'none')};
-  // ${(props) => props.displayRadio && 'display: flex;'};
-  // ${(displayRadio) => displayRadio && 'display: flex;'};
+  display: ${(props) => (props.displayRadio ? props.displayRadio : "none")};
+  // display: ${({ displayRadio }) => (displayRadio ? "flex" : "none")};
+  // ${(props) => props.displayRadio && "display: flex;"};
+  // ${(displayRadio) => displayRadio && "display: flex;"};
   // display: flex;
   align-items: center;
   justify-content: space-around;
-`
+  // margin: 15px 25px;
+`;
 const ButtonCont = styled.div`
   display: flex;
   justify-content: center;
-`
-const Button = styled.button`
-  min-width: 122px;
-  max-width: 122px;
-  min-height: 43px;
-  max-height: 43px;
-  background-color: #bd9b52;
-  color: #fff;
-  border-radius: 6px;
-  border: none;
-  outline: none;
-  &: active {
-    box-shadow: 0 3 px #666;
-    transform: translateY(2px);
-  }
-  &: hover {
-    cursor: pointer;
-  }
-`
+  margin: 15px 25px;
+`;
 const Close = styled.img`
   position: relative;
-  right: -95%;
-  min-width: 20px;
-  max-width: 20px;
+  right: -98%;
+  min-width: 15px;
+  max-width: 15px;
   &: hover {
     cursor: pointer;
   }
-`
+`;
 const Type = styled.span`
-  color: ${(props) => (props.color ? props.color : '')};
-`
+  color: ${(props) => (props.color ? props.color : "")};
+`;
 const Popup = ({
   onPopupClose,
   id,
@@ -112,8 +103,8 @@ const Popup = ({
   onClick,
   displayRadio,
 }) => {
-  const [radio, setRadio] = useState('')
-  const [complete, setComplete] = useState(null)
+  const [radio, setRadio] = useState("");
+  const [complete, setComplete] = useState(null);
   /*
         // const [display, setDisplay] = useState("flex");
         // console.log(complete)
@@ -149,11 +140,11 @@ const Popup = ({
   };
 */
   const ClosePopup = () => {
-    setComplete(complete)
-    onPopupClose(radio)
-    setComplete(complete)
-    console.log('Radio: ', radio)
-  }
+    setComplete(complete);
+    onPopupClose(radio);
+    setComplete(complete);
+    console.log("Radio: ", radio);
+  };
 
   return (
     <Container display={display} id={id}>
@@ -175,12 +166,10 @@ const Popup = ({
           <span>{description}</span>
         </span>
       </Row>
-
-        <RadioButtonCont display={displayRadio}>
-          <RadioButton text="PAID" onRadioSelect={onRadioSelect} />
-          <RadioButton text="PENDING" onRadioSelect={onRadioSelect} />
-        </RadioButtonCont>
-
+      <RadioButtonCont display={displayRadio}>
+        <RadioButton text="PAID" onRadioSelect={onRadioSelect} />
+        <RadioButton text="PENDING" onRadioSelect={onRadioSelect} />
+      </RadioButtonCont>
 
       {/* <FormRadio
           type="radio"
@@ -201,13 +190,13 @@ const Popup = ({
         />{" "}
         <div style={{ color: "#FF8A00" }}>PENDING</div> */}
       <ButtonCont>
-        <Button onClick={onClick}>OK</Button>
+        <Button onClick={ClosePopup} text="OK" width="122px" height="42px" />
       </ButtonCont>
     </Container>
-  )
-}
+  );
+};
 Popup.defaultProps = {
   onPopupClose: () => {},
   onRadioSelect: () => {},
-}
-export default Popup
+};
+export default Popup;

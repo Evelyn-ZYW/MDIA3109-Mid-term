@@ -28,10 +28,10 @@ const Button = styled.button`
 
 `;
 
-const Buttons = ({ text, width, height, fontSize }) => {
+const Buttons = ({ text, width, height, fontSize, onClick }) => {
 
     return <Container>
-        <Button width={width} height={height} fontSize={fontSize}>{text}</Button>
+        <Button width={width} height={height} fontSize={fontSize} onClick={onClick}>{text}</Button>
     </Container>
 }
 
