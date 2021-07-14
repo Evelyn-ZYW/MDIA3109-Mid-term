@@ -20,7 +20,7 @@ const AddBills = () => {
         <TransTitle text={"Amount"} />
       </div>
       <div className="input3">
-        <TransTextarea text={"Description"} height={"140px"} />
+        <TransTextarea text={"Note"} height={"140px"} />
       </div>
       <div className="button" onClick={() => history.push("/trans")}>
         <Buttons
